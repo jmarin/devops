@@ -1,0 +1,7 @@
+# basic dependencies
+- name: Install the libselinux-python package
+  yum: name=libselinux-python state=installed
+
+- name: Install EPEL Repository
+  yum: name=http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm 
+       state=present   

@@ -1,0 +1,18 @@
+---
+- name: Setup vagrant instance
+  hosts: imposm-local
+  remote_user: vagrant
+  sudo: yes
+  vars:
+    user: osm
+    home: /home/osm
+    database: osm
+    username: osm
+    password: "osm"
+    repo_file: /etc/yum.repos.d/CentOS-Base.repo
+    rpm: pgdg-centos93-9.3-1.noarch.rpm
+    rpm_url: http://yum.postgresql.org/9.3/redhat/rhel-7Server-x86_64
+
+  roles:
+    - { role: common, tags: ['common'] }
+    - { role: common, tags: ['postgis'] }
