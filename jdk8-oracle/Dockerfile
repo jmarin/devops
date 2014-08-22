@@ -1,6 +1,6 @@
 # Oracle JDK 8 base image
 
-FROM jmarin/supervisor:latest
+FROM centos:centos7
 MAINTAINER Juan Marin Otero <juan.marin.otero@gmail.com>
 
 WORKDIR /opt/
