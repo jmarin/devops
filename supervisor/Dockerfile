@@ -11,7 +11,11 @@ RUN yum -y install wget
 RUN wget http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm 
 RUN rpm -ivh epel-release-7-0.2.noarch.rpm
 
-RUN yum -y install supervisor && mkdir -p /var/log/supervisor && mkdir -p /etc/supervisor/conf.d
+RUN yum -y install python-setuptools; yum clean all
+RUN easy_install pip
+RUN pip install supervisor
+RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /etc/supervisor/conf.d
 
 # Add supervisor base configuration
 ADD supervisor.conf /etc/supervisor/supervisor.conf
