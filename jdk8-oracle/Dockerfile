@@ -1,6 +1,6 @@
 # Oracle JDK 8 base image
 
-FROM centos:centos7
+FROM jmarin/supervisor:latest
 MAINTAINER Juan Marin Otero <juan.marin.otero@gmail.com>
 
 RUN yum -y install wget; yum clean all
