@@ -1,16 +1,13 @@
-# Docker image for Imposm3
-# To build, run docker build --rm --tag=jmarin/imposm3
-# A container with a shell including Imposm3 can be started by running docker run -t- i jmarin/imposm3
+# Docker image for updating OSM
+# To build, run docker build --rm --tag=jmarin/osm
+# A container with a shell including Imposm3 and Osmosis can be started by running docker run -t -i jmarin/osm /bin/bash
 
-FROM centos:centos7
+FROM jmarin/jdk8
 MAINTAINER Juan Marin Otero <juan.marin.otero@gmail.com>
 
-RUN yum -y update; yum clean all
-RUN yum -y install git mercurial snappy boost-devel gcc gcc-c++ flex wget protobuf protobuf-devel; yum clean all
+RUN yum -y install tar git mercurial snappy boost-devel gcc gcc-c++ flex protobuf protobuf-devel; yum clean all
 
 WORKDIR /tmp
-RUN wget http://dl.fedoraproject.org/pub/epel/beta/7/x86_64/epel-release-7-0.2.noarch.rpm 
-RUN rpm -ivh epel-release-7-0.2.noarch.rpm
 RUN yum -y install golang leveldb leveldb-devel geos geos-devel; yum clean all
 
 ENV GOPATH /usr
@@ -30,6 +27,13 @@ ENV GOPATH /opt/imposm
 RUN go get imposm3
 RUN go install imposm3
 ENV PATH $PATH:/opt/imposm/bin
- 
 
-CMD ["/bin/bash"]
+# Install Osmosis
+RUN mkdir /opt/osmosis
+WORKDIR /opt/osmosis
+RUN wget http://bretth.dev.openstreetmap.org/osmosis-build/osmosis-latest.tgz
+RUN tar zxvf osmosis-latest.tgz
+RUN chmod a+x bin/osmosis
+ENV PATH $PATH:/opt/osmosis/bin
+
+CMD ["supervisord", "-c", "/etc/supervisor/supervisor.conf"]
