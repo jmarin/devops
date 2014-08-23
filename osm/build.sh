@@ -1,1 +1,1 @@
-docker build --rm -t=jmarin/osm .
+docker build --rm -t=jmarin/osm:centos7 .

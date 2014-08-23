@@ -1,1 +1,1 @@
-docker build --rm -t=jmarin/jenkins .
+docker build --rm -t=jmarin/jenkins:centos7 .

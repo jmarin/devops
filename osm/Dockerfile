@@ -2,7 +2,7 @@
 # To build, run docker build --rm --tag=jmarin/osm
 # A container with a shell including Imposm3 and Osmosis can be started by running docker run -t -i jmarin/osm /bin/bash
 
-FROM jmarin/jdk8
+FROM jmarin/jdk8:centos7
 MAINTAINER Juan Marin Otero <juan.marin.otero@gmail.com>
 
 RUN yum -y install tar git mercurial snappy boost-devel gcc gcc-c++ flex protobuf protobuf-devel; yum clean all

@@ -1,1 +1,1 @@
-docker build --rm -t=jmarin/supervisor .
+docker build --rm -t=jmarin/supervisor:centos7 .
