@@ -1,18 +1,18 @@
-imposm3-docker
-==============
+OSM docker
+==========
 
-Imposm3 [Docker](https://docker.io) image
+OSM utilities [Docker](https://docker.io) image
 
-For more information about this software, see [Imposm3](https://github.com/omniscale/imposm3)
+For more information about the software included, see [Imposm3](https://github.com/omniscale/imposm3) and [Osmosis](https://github.com/openstreetmap/osmosis)
 
 To build the Docker image, run the following:
 
 ```bash
-docker build --rm --tag=jmarin/imposm3
+docker build --rm --tag=jmarin/osm
 ```
 
 To start a container from this image, run the following:
 
 ```bash
-docker run -t -i --rm jmarin/imposm3
+docker run -t -i --rm jmarin/osm /bin/bash
 ```
